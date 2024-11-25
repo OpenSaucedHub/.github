@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Open Sauced Hub - Making open source more accessible" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://api.fontshare.com/v2/css?f[]=pixelgrid@400&display=swap" rel="stylesheet" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-codedex-dark text-white">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --pixel-size: 2px;
+  }
+
+  .pixel-border {
+    position: relative;
+    border: var(--pixel-size) solid #fff;
+  }
+
+  .pixel-border::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--pixel-size) * -1);
+    left: calc(var(--pixel-size) * -1);
+    right: calc(var(--pixel-size) * -1);
+    bottom: calc(var(--pixel-size) * -1);
+    background: transparent;
+    border: var(--pixel-size) solid #000;
+    pointer-events: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  .font-pixel {
+    font-family: 'Pixelgrid', monospace;
+  }
+</style>

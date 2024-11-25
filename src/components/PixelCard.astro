@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  color?: string;
+}
+
+const { title, description, color = 'codedex-purple' } = Astro.props;
+---
+
+<div
+  class={`bg-${color} p-6 rounded-lg pixel-border hover:transform hover:scale-105 transition-transform duration-200`}
+>
+  <h3 class="mb-4 font-pixel text-lg">{title}</h3>
+  <p class="text-sm opacity-90">{description}</p>
+</div>

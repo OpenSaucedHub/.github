@@ -1,5 +1,3 @@
-# To learn more about how to use Nix to configure your environment
-# see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
@@ -17,6 +15,9 @@
       "dbaeumer.vscode-eslint"
       "esbenp.prettier-vscode"
       "oven.bun-vscode"
+      "eamodio.gitlens"
+      "astro-build.astro-vscode"
+      "bradlc.vscode-tailwindcss"
       "WakaTime.vscode-wakatime"
     ];
 
@@ -28,9 +29,17 @@
       };
       # Runs when the workspace is (re)started
       onStart = {
-        # You can add any background tasks you want to run on startup
-        # watch-mode = "bun run watch";
+        # Start the Astro development server for previews
+        start-astro-dev = "bun run dev --host 0.0.0.0";
       };
+
+      # Configure ports for Astro preview
+      ports = [
+        {
+          port = 4321;  # Default Astro dev server port
+          onOpen = "openPreview";
+        }
+      ];
     };
   };
 }

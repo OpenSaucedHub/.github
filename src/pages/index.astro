@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+---
+
+<Layout title="Open Sauced Hub">
+  <main class="min-h-screen">
+    <nav class="border-b border-codedex-gray p-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <h1 class="font-pixel text-2xl text-codedex-purple">Open Sauced Hub</h1>
+        <div class="space-x-4">
+          <a href="https://discord.gg/uMgS9evnmv" class="font-pixel text-sm hover:text-codedex-blue"
+            >Discord</a
+          >
+          <a
+            href="https://github.com/OpenSaucedHub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub"
+            class="font-pixel text-sm hover:text-codedex-pink">Join Us</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-16">
+      <div class="mb-16 text-center">
+        <h2 class="mb-6 font-pixel text-4xl text-codedex-blue">🍕 Welcome to Open Sauced Hub</h2>
+        <p class="mx-auto max-w-2xl text-xl opacity-80">
+          A vibrant ecosystem of open source enthusiasts, developers, and creators working together
+          to make open source more accessible and enjoyable for everyone.
+        </p>
+      </div>
+
+      <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <FeatureCard
+          icon="📚"
+          title="Share Knowledge"
+          description="We create and maintain open source projects that help developers grow"
+        />
+        <FeatureCard
+          icon="🤝"
+          title="Build Together"
+          description="We collaborate on projects that make open source more accessible"
+        />
+        <FeatureCard
+          icon="🚀"
+          title="Support Growth"
+          description="We help maintainers and contributors connect and thrive"
+        />
+        <FeatureCard
+          icon="💝"
+          title="Foster Community"
+          description="We provide a welcoming space for developers of all skill levels"
+        />
+      </div>
+
+      <h3 class="mb-8 text-center font-pixel text-2xl text-codedex-pink">Featured Projects</h3>
+      <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <ProjectCard
+          title="Amina"
+          description="Currently personal project, coming soon to OSH"
+          href="https://github.com/vixshan/amina"
+        />
+        <ProjectCard
+          title="Mochi"
+          description="Currently personal project, coming soon to OSH"
+          href="https://github.com/vixshan/mochi"
+        />
+        <ProjectCard
+          title="Link Updater"
+          description="Currently personal project, coming soon to OSH"
+          href="#"
+        />
+      </div>
+
+      <div class="mb-16 text-center">
+        <h3 class="mb-6 font-pixel text-2xl text-codedex-blue">Get Involved</h3>
+        <div class="space-x-4">
+          <a
+            href="https://github.com/OpenSaucedHub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub"
+            class="pixel-border inline-block rounded-lg bg-codedex-purple px-6 py-3 font-pixel hover:bg-opacity-90"
+          >
+            Join the Community
+          </a>
+          <a
+            href="https://discord.gg/uMgS9evnmv"
+            class="pixel-border inline-block rounded-lg bg-codedex-blue px-6 py-3 font-pixel hover:bg-opacity-90"
+          >
+            Join Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-codedex-gray py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="font-pixel text-sm opacity-60">Made with 🍕 by the Open Sauced Hub</p>
+    </div>
+  </footer>
+</Layout>
