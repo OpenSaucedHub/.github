@@ -3,7 +3,7 @@
 <div align="center">
 
 [Join the Community](https://github.com/Open-Sauced-Hub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
-[Join Our Discord](https://discord.gg/uMgS9evnmv) •
+• [Join Our Discord](https://discord.gg/uMgS9evnmv) •
 [Contributing Guidelines](../.github/CONTRIBUTING.md) •
 [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
 
@@ -55,7 +55,8 @@ started.
 
 ## 📜 License
 
-Unless otherwise specified, our projects are licensed under the [MIT License](./LICENSE).
+Unless otherwise specified, our projects are licensed under the
+[MIT License](../.github/LICENSE.md).
 
 ## ✨ Recognition
 
