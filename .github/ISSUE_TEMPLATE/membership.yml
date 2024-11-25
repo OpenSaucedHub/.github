@@ -1,0 +1,51 @@
+name: OSC Membership Request
+description: Request to join the Open Sauced Community
+title: "org/membership: "
+labels: ["membership"]
+assignees:
+  - vixshan
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in joining the Open Sauced Community! 🍕
+
+        Please fill out the information below to request membership.
+
+  - type: input
+    id: github-username
+    attributes:
+      label: GitHub Username
+      description: Your GitHub username (without the @ symbol)
+      placeholder: "username"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: membership-type
+    attributes:
+      label: Membership Type
+      description: What type of membership are you requesting?
+      options:
+        - Member (Regular membership)
+        - Maintainer (For project maintainers)
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why would you like to join the Open Sauced Community?
+      placeholder: Tell us about your interest in open source and what you hope to contribute to the community.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this request, you agree to follow our [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow the Open Sauced Community Code of Conduct
+          required: true

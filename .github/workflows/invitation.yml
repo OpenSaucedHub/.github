@@ -1,0 +1,81 @@
+name: Membership Invitation
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [labeled]
+
+jobs:
+  invite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get issue data
+        id: get_issue_data
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue;
+            if (!issue) return;
+
+            if (!issue.labels.some(label => label.name === 'membership')) {
+              return;
+            }
+
+            // Parse the issue body to get the username
+            const bodyLines = issue.body.split('\n');
+            const usernameMatch = bodyLines.find(line => line.includes('### GitHub Username'));
+            if (!usernameMatch) return;
+
+            const username = usernameMatch.split('\n')[1].trim();
+            console.log(`Username to invite: ${username}`);
+
+            return {
+              username: username,
+              issue_number: issue.number
+            };
+
+      - name: Send invitation
+        if: steps.get_issue_data.outputs.result
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.ORG_ADMIN_TOKEN }}
+          script: |
+            const data = JSON.parse(process.env.ISSUE_DATA);
+            const username = data.username;
+            const issueNumber = data.issue_number;
+
+            try {
+              // Send the invitation
+              await github.rest.orgs.createInvitation({
+                org: context.repo.owner,
+                username: username,
+                role: 'member'
+              });
+              
+              // Comment on the issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `✨ @${username} has been invited to the organization! Please check your email for the invitation.`
+              });
+              
+              // Close the issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                state: 'closed',
+                labels: ['membership', 'invited']
+              });
+            } catch (error) {
+              console.error('Error:', error);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `❌ There was an error sending the invitation. Please check the workflow logs.`
+              });
+            }
+        env:
+          ISSUE_DATA: ${{ steps.get_issue_data.outputs.result }}
