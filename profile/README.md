@@ -1,7 +1,8 @@
-# 🍕 Welcome to Open Sauced Community
+# 🍕 Welcome to Open Sauced Hub
 
 <div align="center">
-[Join Community](https://github.com/Open-Sauced-Community/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+the+Open+Sauced+Community+Organization)
+
+[Join the Community](https://github.com/Open-Sauced-Hub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
 [Join Our Discord](https://discord.gg/uMgS9evnmv) •
 [Contributing Guidelines](../.github/CONTRIBUTING.md) •
 [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
@@ -10,9 +11,9 @@
 
 ## 🌟 About Us
 
-Open Sauced Community is a vibrant ecosystem of open source enthusiasts, developers, and creators
-working together to make open source more accessible and enjoyable for everyone. Our mission is to
-empower developers to contribute to open source projects and build meaningful connections within the
+Open Sauced Hub is a vibrant ecosystem of open source enthusiasts, developers, and creators working
+together to make open source more accessible and enjoyable for everyone. Our mission is to empower
+developers to contribute to open source projects and build meaningful connections within the
 community.
 
 ## 🚀 What We Do
@@ -26,9 +27,9 @@ community.
 
 Here are some of our featured projects:
 
-- [Amina](https://github.com/vixshan/amina) - Currently personal project, coming soon to OSC
-- [Mochi](https://github.com/vixshan/mochi) - Currently personal project, coming soon to OSC
-- [Link Updater](link) - Currently personal project, coming soon to OSC
+- [Amina](https://github.com/vixshan/amina) - Currently personal project, coming soon to OSH
+- [Mochi](https://github.com/vixshan/mochi) - Currently personal project, coming soon to OSH
+- [Link Updater](link) - Currently personal project, coming soon to OSH
 
 ## 🤝 How to Get Involved
 
@@ -44,7 +45,10 @@ your help is welcome. Check out our [Contributing Guidelines](../.github/CONTRIB
 started.
 
 ## 📢 Community
-- **GH Community**: [Join Community](https://github.com/Open-Sauced-Community/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+the+Open+Sauced+Community+Organization) to contribute your Open Source project.
+
+- **GH Community**:
+  [Join the Community](https://github.com/Open-Sauced-Hub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
+  to contribute your Open Source project.
 - **Discord(TBD)**: Join our [Discord server](https://discord.gg/uMgS9evnmv) for real-time
   discussions
 - **Discussions**: Use GitHub Discussions for longer-form conversations
@@ -64,5 +68,5 @@ Special thanks to all our contributors who make this community amazing!
 ---
 
 <div align="center">
-  Made with 🍕 by the Open Sauced Community
+  Made with 🍕 by the Open Sauced Hub
 </div>
