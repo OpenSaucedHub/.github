@@ -17,6 +17,7 @@
       "dbaeumer.vscode-eslint"
       "esbenp.prettier-vscode"
       "oven.bun-vscode"
+      "eamodio.gitlens"
       "WakaTime.vscode-wakatime"
     ];
 

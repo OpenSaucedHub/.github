@@ -1,113 +1,54 @@
-name: Membership Invitation
+name: Organization Invitation Workflow
+
 on:
-  issue_comment:
-    types: [created]
   issues:
     types: [labeled]
 
 jobs:
-  invite:
+  automate_invite:
     runs-on: ubuntu-latest
+    if: github.event.label.name == 'membership'
     steps:
-      - name: Get issue data
-        id: get_issue_data
-        uses: actions/github-script@v7
+      - name: Invite on label
+        uses: vj-abigo/invite-on-label@v1.4
+        with:
+          organization: "OpenSaucedHub"
+          label: membership
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          comment: |
+            👋 Welcome to Open Source Hub! 🎉
+            
+            Your invitation to join the organization has been sent. Here's what to do next:
+            
+            1. Check your email for the invitation
+            2. After accepting, make your membership public by visiting: https://github.com/orgs/Open-Source-Hub/people
+            3. Find your name and change the visibility dropdown to "Public"
+            
+            We're excited to have you as part of our community! 🚀
+        env:
+          INVITE_TOKEN: ${{ secrets.INVITE_TOKEN }}
+
+      - name: Update labels
+        if: success()
+        uses: actions/github-script@v6
         with:
           script: |
             const issue = context.payload.issue;
-            if (!issue) return;
-
-            if (!issue.labels.some(label => label.name === 'membership')) {
-              return;
-            }
-
-            // Parse the issue body to get the username
-            const bodyLines = issue.body.split('\n');
-            const usernameMatch = bodyLines.find(line => 
-              line.trim().startsWith('### GitHub Username') || 
-              line.includes('github-username')
-            );
-
-            if (!usernameMatch) return;
-
-            // Find the next non-empty line after the username header
-            const bodyIndex = bodyLines.indexOf(usernameMatch);
-            let username = '';
-
-            // Look for the username in the next few lines
-            for (let i = bodyIndex + 1; i < bodyLines.length; i++) {
-              const line = bodyLines[i].trim();
-              if (line && !line.startsWith('#') && !line.startsWith('-')) {
-                username = line;
-                break;
-              }
-            }
-
-            if (!username) return;
-
-            console.log(`Username to invite: ${username}`);
-
-            return JSON.stringify({
-              username: username,
-              issue_number: issue.number
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              name: 'membership'
             });
-
-      - name: Send invitation
-        if: steps.get_issue_data.outputs.result
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.ORG_ADMIN_TOKEN }}
-          script: |
-            const data = JSON.parse(process.env.ISSUE_DATA);
-            const username = data.username;
-            const issueNumber = data.issue_number;
-
-            try {
-              // Send the invitation using the correct role enum
-              await github.rest.orgs.createInvitation({
-                org: context.repo.owner,
-                username: username,
-                role: 'direct_member'  // Changed from 'member' to 'direct_member'
-              });
-              
-              // Comment on the issue
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                body: `✨ @${username} has been invited to the organization! Please check your email for the invitation.`
-              });
-              
-              // Add the 'invited' label and close the issue
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber,
-                state: 'closed',
-                labels: ['membership', 'invited']
-              });
-            } catch (error) {
-              console.error('Error:', error);
-              
-              let errorMessage = '❌ There was an error sending the invitation.';
-              if (error.status === 422) {
-                errorMessage += ' The role or permissions are invalid.';
-              } else if (error.status === 404) {
-                errorMessage += ' The organization or user could not be found.';
-              } else if (error.status === 403) {
-                errorMessage += ' The token does not have sufficient permissions.';
-              }
-              
-              try {
-                await github.rest.issues.createComment({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  body: `${errorMessage} Please check the workflow logs for more details.`
-                });
-              } catch (commentError) {
-                console.error('Error posting comment:', commentError);
-              }
-            }
-        env:
-          ISSUE_DATA: ${{ steps.get_issue_data.outputs.result }}
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: ['invited']
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              state: 'closed'
+            });

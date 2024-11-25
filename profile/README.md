@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[Join the Community](https://github.com/Open-Sauced-Hub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
+[Join the Community](https://github.com/OpenSaucedHub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
 • [Join Our Discord](https://discord.gg/uMgS9evnmv) •
 [Contributing Guidelines](../.github/CONTRIBUTING.md) •
 [Code of Conduct](../.github/CODE_OF_CONDUCT.md)
@@ -47,7 +47,7 @@ started.
 ## 📢 Community
 
 - **GH Community**:
-  [Join the Community](https://github.com/Open-Sauced-Hub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
+  [Join the Community](https://github.com/OpenSaucedHub/.github/issues/new?assignees=vixshan&labels=membership&template=membership.yml&title=Please+invite+me+to+Open+Sauced+Hub)
   to contribute your Open Source project.
 - **Discord(TBD)**: Join our [Discord server](https://discord.gg/uMgS9evnmv) for real-time
   discussions

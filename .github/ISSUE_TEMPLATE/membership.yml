@@ -47,7 +47,7 @@ body:
       label: Code of Conduct
       description:
         By submitting this request, you agree to follow our [Code of
-        Conduct](https://github.com/Open-Sauced-Hub/.github/blob/main/.github/CODE_OF_CONDUCT.md)
+        Conduct](https://github.com/OpenSaucedHub/.github/blob/main/.github/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow the Open Sauced Hub Code of Conduct
           required: true
