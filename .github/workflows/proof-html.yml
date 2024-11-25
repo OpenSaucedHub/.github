@@ -10,24 +10,13 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun i
-
-      - name: Build Astro
-        run: bun run build
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./dist"
-
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+  proof:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Proof HTML
-      - uses: anishathalye/proof-html@v1.1.0
+        uses: anishathalye/proof-html@v1.1.0
         with:
           directory: ./dist
